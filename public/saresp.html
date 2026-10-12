@@ -1,0 +1,175 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Desafio SARESP 2026 | Quiz 9º Ano ao vivo</title><style>
+*{box-sizing:border-box}body{background:#181136;color:#fff;font:18px system-ui,Arial;margin:0}main{max-width:960px;margin:auto;padding:22px}textarea{width:100%;padding:14px;border-radius:10px;font-size:18px;min-height:94px;margin:8px 0;font-family:inherit}small{color:#eee1ff} .stat{padding:13px;margin:8px 0;border-radius:10px;background:#44356d;text-align:left}.stat strong{color:#fff0ab} .tag{font-size:13px;color:#ffe289}h1{text-align:center;color:#ffe289;font-size:clamp(30px,5vw,53px)}p{text-align:center}h2{text-align:center}section{background:#312358;border-radius:20px;padding:26px;margin:22px 0}button{background:#ffdc64;color:#171033;padding:16px 22px;margin:6px;border:0;border-radius:12px;font-size:19px;font-weight:bold;cursor:pointer}button:disabled{opacity:.5;cursor:default}input{padding:14px;border-radius:10px;font-size:19px;width:90%;max-width:350px;margin:8px}.hidden{display:none}.center{text-align:center}.pin{font-size:70px;font-weight:900;color:#ffe289;letter-spacing:5px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{min-height:120px;color:white;text-align:left}.answer:nth-child(1){background:#bb3045}.answer:nth-child(2){background:#1765cb}.answer:nth-child(3){background:#ca8617}.answer:nth-child(4){background:#238955}.chosen{outline:4px solid white}.rank{padding:12px;border-bottom:1px solid #796d98;display:flex;justify-content:space-between}.podium{display:flex;justify-content:space-around;align-items:end;gap:10px;margin:30px auto}.podium div{padding:20px 8px;background:#7653ae;border-radius:15px;flex:1;text-align:center}.podium div:nth-child(2){background:#947020;padding-top:60px}a{color:#ffe289;overflow-wrap:anywhere}.timer{font-size:28px;color:#ffe289}@media(max-width:570px){.answers{grid-template-columns:1fr}.answer{min-height:75px}.pin{font-size:48px}}</style><style>
+/* Identidade visual do SARESP: cores vibrantes e ilustrações vetoriais animadas */
+:root{--pink:#ed438e;--blue:#4d82fa;--teal:#26d7b5;--yellow:#f7c94d;--purple:#8a64ea}
+body{background:radial-gradient(circle at 15% 0%,#4b258b 0%,transparent 35%),radial-gradient(circle at 90% 35%,#223e86 0%,transparent 42%),linear-gradient(165deg,#191338,#201640 70%,#1b2553);background-attachment:fixed;min-height:100vh;overflow-x:hidden}
+body::before{content:"✦     ✦        ✧         ✦      ✧      ✦";position:fixed;top:2%;left:2%;right:0;text-align:center;letter-spacing:22px;color:#ffffff23;font-size:36px;pointer-events:none;animation:drift 9s ease-in-out infinite alternate}
+h1{background:linear-gradient(95deg,#ffe673,#ff9ade,#76f4f0,#ffe673);background-size:300% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:rainbow 9s linear infinite;text-shadow:none;letter-spacing:-1.2px}
+section{position:relative;background:linear-gradient(140deg,#392763eb,#322456ee);border:1px solid #ffffff2c;box-shadow:0 16px 50px #09061862;backdrop-filter:blur(8px)}
+section:not(.hidden){animation:popIn .55s cubic-bezier(.2,.9,.3,1)}
+button{box-shadow:0 5px 0 #0d0d2150;transition:transform .16s,filter .16s,box-shadow .16s}
+button:not(:disabled):hover{transform:translateY(-3px);filter:brightness(1.08);box-shadow:0 8px 0 #0d0d2150}
+button:not(:disabled):active{transform:scale(.97);box-shadow:0 1px 0 #0d0d2150}
+.answer{border:2px solid #ffffff4e;text-align:center;border-radius:18px;font-size:clamp(16px,2.4vw,22px);padding:18px 12px;line-height:1.3;box-shadow:0 7px 0 #09061860}
+.answer:nth-child(1){background:linear-gradient(125deg,#ef4d65,#b52d68)}
+.answer:nth-child(2){background:linear-gradient(125deg,#2c9bff,#3064c5)}
+.answer:nth-child(3){background:linear-gradient(125deg,#ffbd40,#d7762c);color:#1e183b}
+.answer:nth-child(4){background:linear-gradient(125deg,#41cdaa,#178d81)}
+.answer.chosen{outline:4px solid #fff;transform:scale(1.015)}
+#home{background:linear-gradient(135deg,#5935a3,#302869)}
+#game h2{font-size:clamp(22px,3.8vw,34px);max-width:880px;margin:20px auto 15px}
+.game-meta{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+#skillLabel{padding:8px 16px;border:1px solid #ffffff48;border-radius:100px;background:#ffffff1e;font-size:14px;font-weight:700}
+.progress-track{height:11px;background:#130e31;border-radius:100px;overflow:hidden;margin:14px 0}
+#progressFill{height:100%;background:linear-gradient(90deg,#ff6fa8,#ffc567,#54e7b1);transition:width .5s}
+#artStage{height:clamp(145px,23vw,245px);border-radius:22px;overflow:hidden;margin:14px auto 18px;position:relative;border:2px solid #ffffff46;box-shadow:0 12px 32px #0004}
+#artSvg{width:100%;height:100%;display:block}
+#artStage svg .heroIcon{animation:floaty 3.6s ease-in-out infinite;transform-origin:center}
+#artStage svg .orb{animation:bob 5s ease-in-out infinite alternate;transform-origin:center}
+#artStage svg .spin{animation:turn 18s linear infinite;transform-origin:center}
+#artStage svg .twinkle{animation:twink 2s ease-in-out infinite alternate}
+.art-tag{position:absolute;bottom:10px;left:12px;padding:6px 14px;border-radius:100px;color:white;background:#0006;font-size:12px;font-weight:700;border:1px solid #fff5}
+.topic-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0}
+.topic-pills span{border-radius:100px;background:#fff2;padding:9px 12px;border:1px solid #ffffff3a;font-size:13px;font-weight:700}
+#correctBox{background:linear-gradient(135deg,#198666,#146f75);border:2px solid #83ffe3;border-radius:18px;padding:16px;margin:14px auto;max-width:840px;font-size:clamp(18px,3vw,25px);font-weight:800;box-shadow:0 6px 24px #13b78933;animation:popIn .65s}
+#feedback{background:#20193f;border-left:6px solid #ffd565;border-radius:14px;padding:18px;text-align:left;font-size:clamp(16px,2.2vw,21px);line-height:1.6}
+#resultTitle{font-size:clamp(26px,4vw,44px)}
+#timer.urgent{color:#ff7b8b;animation:twink .45s infinite alternate}
+.rank{border-radius:12px;margin:6px 0;background:#ffffff13;animation:slideFromRight .4s both}
+.podium div{animation:podiumRise .8s backwards;box-shadow:0 8px 28px #1009287a;overflow-wrap:anywhere}
+.podium div:nth-child(1){animation-delay:.2s}.podium div:nth-child(2){animation-delay:.05s}.podium div:nth-child(3){animation-delay:.4s}
+#final{overflow:hidden}#final:before{content:"🎊 ⭐ 🎉 ✨ 🎊 🎉 ✨";position:absolute;top:10px;left:0;right:0;text-align:center;letter-spacing:8px;font-size:23px;opacity:.4;animation:drift 3s ease-in-out infinite alternate}
+.brandstamp{font-size:13px;color:#e2ccff;letter-spacing:1.4px;font-weight:800;text-align:center;text-transform:uppercase}
+.subtitle{color:#f6daff;font-size:clamp(15px,2.5vw,19px)}
+#home p{line-height:1.7}
+#starBurst{position:absolute;top:6px;right:16px;display:none;font-size:35px;pointer-events:none}
+#starBurst.play{display:block;animation:popIn .65s ease-out forwards}
+@keyframes popIn{from{opacity:0;transform:translateY(22px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes rainbow{to{background-position:300% center}}
+@keyframes drift{to{transform:translate3d(8px,14px,0)}}
+@keyframes bob{from{transform:translateY(1px)}to{transform:translateY(-8px)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-9px) rotate(5deg)}}
+@keyframes turn{to{transform:rotate(360deg)}}
+@keyframes twink{from{opacity:.55;transform:scale(.9)}to{opacity:1;transform:scale(1.12)}}
+@keyframes slideFromRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes podiumRise{from{opacity:0;transform:translateY(75px) scale(.8)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:620px){section{padding:16px;margin:12px 0}.answer{min-height:74px}main{padding:13px}.pin{font-size:43px}.art-tag{font-size:11px}#feedback{padding:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style></head><body><main><p class="brandstamp">E.E. PEI Deputado José Costa</p><h1>🚀 DESAFIO SARESP 2026</h1><p class="subtitle">9º ANO • Missão Revisão • Aprender, competir e superar!</p>
+<section id="home" class="center"><h2>🎯 36 desafios • 6 disciplinas</h2><p>Responda pelo celular, veja a <b>resposta comentada após cada rodada</b> e dispute o pódio com sua equipe!</p><div class="topic-pills"><span>📖 Português</span><span>🧮 Matemática</span><span>🧬 Ciências</span><span>🏛️ História</span><span>🌍 Geografia</span><span>💬 Inglês</span></div><button id="create">🎓 Criar sala (professor)</button><button id="enter">📱 Entrar (estudante)</button></section>
+<section id="join" class="center hidden"><h2>Entrar na partida</h2><label>PIN<br><input id="pinInput" placeholder="6 números" inputmode="numeric" maxlength="6"></label><br><label>Nome ou apelido<br><input id="nameInput" maxlength="24" placeholder="Seu apelido"></label><br><button id="joinBtn">Participar</button></section>
+<section id="lobby" class="center hidden"><h2>Escaneie o QR Code ou use o PIN</h2><div id="pinShow" class="pin"></div><img id="qr" alt="QR Code para entrar" style="width:200px;max-width:100%;background:white;padding:7px;border-radius:12px"><p><a id="joinLink" href="#"></a></p><h3 id="playersCount">0 participantes</h3><p id="lobbyNames"></p><button id="start" disabled>▶ Começar quiz</button></section>
+<section id="studentWait" class="center hidden"><h2>✅ Participação confirmada</h2><p>Bem-vindo(a), <strong id="myName"></strong>!</p><p>O professor iniciará a partida.</p></section>
+<section id="game" class="hidden"><div class="game-meta"><strong id="round"></strong><span id="skillLabel">Revisão SARESP</span><strong id="timer" class="timer">⏱ 40s</strong><strong id="counter"></strong></div><div class="progress-track"><div id="progressFill" style="width:0%"></div></div><div id="artStage" role="img" aria-label="Ilustração animada referente à disciplina"><svg id="artSvg" viewBox="0 0 960 255" preserveAspectRatio="xMidYMid slice"></svg><span id="visualTitle" class="art-tag">Desafio SARESP</span></div><h2 id="q"></h2><div class="answers" id="options"></div><p id="answerHint"></p></section>
+<section id="result" class="hidden center"><span id="starBurst">🎉✨🎉</span><h2 id="resultTitle"></h2><div id="correctBox"></div><p id="feedback"></p><h2>🏆 Ranking ao vivo</h2><div id="ranking"></div><button id="next" class="hidden">Próxima questão →</button><p id="waitNext">Aguarde o professor.</p></section>
+<section id="reflection" class="hidden"><h2>✍️ Bilhete de saída: o que aprendi?</h2>
+<p>Responda com suas palavras. Não existe pontuação automática nesta etapa: sua professora vai ler suas respostas.</p>
+<label><strong>1. Qual conteúdo da revisão SARESP foi mais desafiador? Explique sua dificuldade.</strong><textarea id="writing1" maxlength="500" placeholder="Escreva o que você compreendeu..."></textarea></label>
+<label><strong>2. Escolha uma habilidade que deseja melhorar e descreva como pretende estudá-la.</strong><textarea id="writing2" maxlength="500" placeholder="Pense na identidade e no protagonismo..."></textarea></label>
+<div class="center"><button id="sendReflection">Enviar minhas reflexões</button><p id="reflectionStatus"></p></div>
+</section>
+<section id="teacherPanel" class="hidden"><h2>📊 Diagnóstico da aprendizagem</h2>
+<p>Os dados abaixo mostram acertos por eixo e por questão. A pontuação do pódio inclui rapidez; para avaliar a aprendizagem, considere o percentual de acertos e as reflexões escritas.</p>
+<div id="teacherSkills"></div><h3>Questões que precisam de retomada</h3><div id="teacherQuestions"></div>
+<div class="center"><button id="downloadStudents">📥 Baixar respostas individuais (CSV)</button><button id="downloadItems">📥 Baixar análise por questão (CSV)</button></div>
+<p><small>Utilize apelidos, não nomes completos. Os relatórios devem ser baixados antes de fechar a sala; os dados ficam apenas na memória temporária da partida. Leia pessoalmente as respostas do bilhete de saída.</small></p>
+</section>
+<section id="final" class="hidden"><h2>🏆 Pódio final</h2><div class="podium" id="podium"></div><h2>Classificação completa</h2><div id="finalRanking"></div><p>🌟 Conhecimento é conquista: continue estudando!</p><p><button onclick="location.href='/saresp.html'">Nova partida</button></p></section>
+<section id="closed" class="hidden center"><h2>Sala encerrada</h2><p>O professor desconectou. Peça um novo PIN.</p><button onclick="location.href='/saresp.html'">Voltar</button></section>
+<p style="font-size:14px">Questões autorais de revisão baseadas no Roteiro de Estudos SARESP 2026 do 9º ano. Não são questões oficiais do exame. Use apenas apelidos.</p></main><script src="/socket.io/socket.io.js"></script><script>
+const socket=io(),$=id=>document.getElementById(id),screens=['home','join','lobby','studentWait','game','result','reflection','final','closed'];
+let role='',selected=-1,clock,lastReport=null;
+
+const artIcons={
+ literatura:['🏙️','☁️','📰','🔗','🗣️','📣'],
+ matematica:['🔢','📐','📏','💸','📊','🎲'],
+ ciencias:['🧊','🌈','🧬','🦎','🌳','🪐'],
+ historia:['⚖️','📉','🌐','📜','📖','🗺️'],
+ geografia:['📦','🧭','🌬️','🏢','📱','♨️'],
+ ingles:['🩺','☁️','📝','✨','🛍️','🔀']
+};
+const artColors={
+ literatura:['#ec4c8e','#7639d5','#eea151'],
+ matematica:['#256cd6','#624ce0','#3cd8df'],
+ ciencias:['#009a90','#3169b9','#a3d557'],
+ historia:['#c76e3d','#773e96','#eed175'],
+ geografia:['#239778','#2079cb','#a3db6b'],
+ ingles:['#ef6475','#886be1','#f4c35b']
+};
+const artForms={
+ literatura:`<path d="M280 74 Q385 22 475 84 L475 219 Q380 175 280 214Z" fill="#fff9" stroke="#fff" stroke-width="5"/><path d="M475 84 Q575 24 675 74 L675 215 Q571 179 475 219Z" fill="#fffc" stroke="#fff" stroke-width="5"/><path d="M475 86V216" stroke="#7854bc" stroke-width="4"/><path d="M312 115L432 130M310 145L420 153M517 128L645 111M520 156L639 144" stroke="#614c9b" stroke-width="7" opacity=".55" stroke-linecap="round"/>`,
+ matematica:`<path d="M338 202 L457 65 L572 202 Z" fill="#f7fffe55" stroke="#fff" stroke-width="8" stroke-linejoin="round"/><circle cx="635" cy="116" r="63" stroke="#fff" stroke-width="9" fill="#ffffff19"/><line x1="635" y1="116" x2="694" y2="116" stroke="#fff" stroke-width="5"/><path d="M369 189H387V172" fill="none" stroke="#fff" stroke-width="4"/><path d="M272 220V48M259 205H697" stroke="#fff7" stroke-width="2"/>`,
+ ciencias:`<circle cx="475" cy="142" r="24" fill="#fff8f0"/><ellipse cx="475" cy="142" rx="164" ry="65" fill="none" stroke="#fff" stroke-width="8" transform="rotate(23 475 142)"/><ellipse cx="475" cy="142" rx="164" ry="65" fill="none" stroke="#c6fff8" stroke-width="8" transform="rotate(-23 475 142)"/><circle cx="350" cy="103" r="15" fill="#ffd760"/><circle cx="600" cy="174" r="14" fill="#e8feff"/>`,
+ historia:`<path d="M289 92 L472 29 L660 92Z" fill="#fff8e5bd" stroke="#fff8ec" stroke-width="7"/><rect x="284" y="203" width="384" height="25" rx="4" fill="#fff8e5bd"/><rect x="312" y="95" width="42" height="109" fill="#fff8e5bd"/><rect x="397" y="95" width="42" height="109" fill="#fff8e5bd"/><rect x="482" y="95" width="42" height="109" fill="#fff8e5bd"/><rect x="567" y="95" width="42" height="109" fill="#fff8e5bd"/>`,
+ geografia:`<circle cx="475" cy="138" r="106" fill="#d4f9ff32" stroke="#fff" stroke-width="7"/><ellipse cx="475" cy="138" rx="44" ry="106" fill="none" stroke="#fff9" stroke-width="4"/><ellipse cx="475" cy="138" rx="106" ry="40" fill="none" stroke="#fff9" stroke-width="4"/><path d="M422 74L462 56L490 75L480 98L515 116L495 142L466 137L447 162L428 136L402 122Z" fill="#e6f8a6c4"/><path d="M511 168L547 152L569 172L555 202L527 211L513 189Z" fill="#e6f8a6c4"/>`,
+ ingles:`<rect x="268" y="51" width="265" height="132" rx="37" fill="#fff9" stroke="#fff" stroke-width="5"/><path d="M357 182L326 211L410 182" fill="#fff9" stroke="#fff" stroke-width="5"/><rect x="492" y="96" width="230" height="112" rx="31" fill="#fff8" stroke="#fff" stroke-width="5"/><path d="M629 207L674 227L663 198" fill="#fff8" stroke="#fff" stroke-width="5"/><path d="M316 95H470M316 124H423M541 142H675M541 169H635" stroke="#7c62b8" stroke-width="9" stroke-linecap="round"/>`
+};
+function renderArt(d){
+ const art=artForms[d.art]?' '+d.art:' literatura',k=art.trim(),colors=artColors[k],sym=(artIcons[k]||[])[d.visual%6]||'⭐';
+ const g='g'+d.index,angle=(d.visual%6)*30;
+ const svg=`<defs><linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${colors[0]}"/><stop offset="54%" stop-color="${colors[1]}"/><stop offset="100%" stop-color="${colors[2]}"/></linearGradient></defs>
+ <rect width="960" height="255" rx="20" fill="url(#${g})"/>
+ <circle class="orb" cx="115" cy="65" r="83" fill="#fff" opacity=".13"/><circle class="orb" cx="825" cy="220" r="116" fill="#fff" opacity=".12"/>
+ <g class="spin" style="transform-origin:480px 130px"><circle cx="480" cy="130" r="123" stroke="#fff5" stroke-width="2" stroke-dasharray="11 18" fill="none"/></g>
+ <g opacity=".75"><circle class="twinkle" cx="140" cy="178" r="7" fill="#fff"/><circle class="twinkle" cx="775" cy="61" r="10" fill="#fff"/><path d="M810 175l10 23 24 8-24 8-10 23-9-23-24-8 24-8Z" fill="#fff8"/><path d="M156 23l7 14 14 6-14 5-7 15-5-15-15-5 15-6Z" fill="#fff8"/></g>
+ <g transform="rotate(${angle/13-7} 475 135)">${artForms[k]}</g>
+ <text class="heroIcon" x="90" y="194" font-size="108" text-anchor="middle">${sym}</text>
+ <text x="874" y="130" font-size="80" text-anchor="middle" opacity=".66">${d.emoji||'✨'}</text>`;
+ $('artSvg').innerHTML=svg;$('visualTitle').textContent=d.skill+' • '+d.code;
+ $('artStage').setAttribute('aria-label','Ilustração de '+d.skill+': '+d.code);
+}
+
+const show=id=>{screens.forEach(x=>$(x).classList.toggle('hidden',x!==id));$('teacherPanel').classList.toggle('hidden',!(role==='host'&&(id==='result'||id==='final')))};
+const txt=(id,value)=>$(id).textContent=value;
+function ranking(id,data){$(id).replaceChildren();data.forEach(p=>{let d=document.createElement('div');d.className='rank';let a=document.createElement('span'),b=document.createElement('b');a.textContent=p.place+'º '+p.name;b.textContent=p.score.toLocaleString('pt-BR')+' pts';d.append(a,b);$(id).append(d)})}
+$('create').onclick=()=>socket.emit('create',{quiz:'saresp'},r=>{if(!r?.ok)return alert('Erro ao criar sala');role='host';txt('pinShow',r.pin);$('qr').src=r.qr;$('joinLink').href=r.joinUrl;txt('joinLink',r.joinUrl);show('lobby')});
+$('enter').onclick=()=>show('join');
+$('pinInput').value=new URLSearchParams(location.search).get('pin')||'';if($('pinInput').value)show('join');
+$('joinBtn').onclick=()=>socket.emit('join',{pin:$('pinInput').value.trim(),name:$('nameInput').value.trim()},r=>{if(!r?.ok)return alert(r?.error||'Erro ao entrar');role='player';txt('myName',r.name);show('studentWait')});
+$('start').onclick=()=>socket.emit('start');$('next').onclick=()=>socket.emit('next');
+socket.on('roster',r=>{if(role==='host'){txt('playersCount',r.count+' participantes');txt('lobbyNames',r.players.map(p=>p.name).join(' • '));$('start').disabled=r.count===0}});
+socket.on('question',d=>{selected=-1;show('game');txt('round','Pergunta '+d.index+' de '+d.total);txt('q',d.q);txt('skillLabel',d.skill||'Revisão');$('progressFill').style.width=((d.index-1)/d.total*100)+'%';renderArt(d);txt('counter','');txt('answerHint',role==='host'?'Acompanhe o total de respostas':'Selecione uma alternativa!');$('options').replaceChildren();d.a.forEach((a,i)=>{let b=document.createElement('button');b.className='answer';b.textContent=['▲','◆','●','■'][i]+' '+a;b.disabled=role==='host';b.onclick=()=>{if(selected!==-1)return;selected=i;socket.emit('answer',i,r=>{if(!r?.ok)txt('answerHint','Erro ao registrar resposta')});[...$('options').children].forEach(x=>x.disabled=true);b.classList.add('chosen');txt('answerHint','Resposta enviada!')};$('options').append(b)});clearInterval(clock);const update=()=>{let remain=Math.max(0,Math.ceil((d.deadline-Date.now())/1000));txt('timer','⏱ '+remain+'s');$('timer').classList.toggle('urgent',remain<=10);};update();clock=setInterval(update,250)});
+socket.on('answered',d=>{if(role==='host')txt('counter',d.count+'/'+d.total+' respostas')});
+socket.on('reveal',d=>{clearInterval(clock);show('result');txt('resultTitle',role==='host'?'✅ Resposta comentada':selected<0?'⏰ Tempo esgotado':selected===d.correct?'🎉 Você acertou!':'💡 Hora de aprender!');txt('correctBox',('ABCD'[d.correct])+' — '+d.correctText);txt('feedback','📚 EXPLICAÇÃO: '+d.explanation);$('starBurst').classList.toggle('play',selected===d.correct);ranking('ranking',d.ranking);$('next').classList.toggle('hidden',role!=='host');$('waitNext').classList.toggle('hidden',role==='host')});
+socket.on('finished',d=>{show(role==='host'?'final':'reflection');$('podium').replaceChildren();[d.ranking[1],d.ranking[0],d.ranking[2]].forEach((p,i)=>{let div=document.createElement('div');div.textContent=p?['🥈','🥇','🥉'][i]+' '+p.name+' '+p.score.toLocaleString('pt-BR')+' pts':'—';$('podium').append(div)});ranking('finalRanking',d.ranking)});
+socket.on('teacherReport',data=>{lastReport=data;renderTeacherReport(data)});
+const safeNumber=x=>x===null?'sem respostas':x+'%';
+function renderTeacherReport(data){
+ $('teacherSkills').replaceChildren();data.skills.forEach(x=>{
+  const el=document.createElement('div');el.className='stat';const title=document.createElement('strong');title.textContent=x.skill+' — '+safeNumber(x.rate);
+  const detail=document.createElement('div');detail.textContent=x.correct+' acertos em '+x.responded+' respostas';el.append(title,detail);$('teacherSkills').append(el);
+ });
+ $('teacherQuestions').replaceChildren();
+ [...data.questions].sort((a,b)=>(a.rate??-1)-(b.rate??-1)).forEach(q=>{
+  const el=document.createElement('div');el.className='stat';
+  const name=document.createElement('strong');name.textContent='Q'+q.index+' · '+safeNumber(q.rate)+' · '+q.skill;
+  const note=document.createElement('div');note.textContent=q.q+' ('+q.correct+'/'+q.responded+' acertos; '+q.code+')';
+  el.append(name,note);$('teacherQuestions').append(el);
+ });
+}
+function protectCsv(x){let t=String(x??'');if(/^[=+@-]/.test(t.trim()))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'}
+function downloadCsv(filename,rows){
+ const csv='\uFEFF'+rows.map(r=>r.map(protectCsv).join(';')).join('\r\n');
+ const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+$('downloadStudents').onclick=()=>{
+ if(!lastReport)return alert('O relatório ainda não está disponível');
+ const header=['Apelido','Acertos','Respondidas','Total','% do total',...lastReport.questions.map(q=>'Q'+q.index),'Bilhete de saída 1','Bilhete de saída 2'];
+ const rows=lastReport.students.map(p=>[p.name,p.correct,p.answered,p.total,p.percent,...p.answers.map(a=>a?(a.correct?'Acerto ':'Erro ')+('ABCD'[a.choice]):'Não respondeu'),...(p.reflections||['',''])]);
+ downloadCsv('revisao_saresp_9ano_aprendizagem_individual.csv',[header,...rows]);
+};
+$('downloadItems').onclick=()=>{
+ if(!lastReport)return alert('O relatório ainda não está disponível');
+ const rows=lastReport.questions.map(q=>[q.index,q.skill,q.code,q.q,q.responded,q.correct,q.rate??'']);
+ downloadCsv('revisao_saresp_9ano_diagnostico_questoes.csv',[['Questão','Eixo','Habilidade','Enunciado','Responderam','Acertos','Acerto %'],...rows]);
+};
+$('sendReflection').onclick=()=>{
+ const answers=[$('writing1').value.trim(),$('writing2').value.trim()];
+ if(answers.some(a=>a.length<10)){txt('reflectionStatus','Escreva pelo menos uma frase em cada resposta (mínimo de 10 caracteres).');return}
+ $('sendReflection').disabled=true;socket.emit('reflection',answers,r=>{
+ if(r?.ok){txt('reflectionStatus','Respostas registradas para a professora.');show('final')}else{$('sendReflection').disabled=false;txt('reflectionStatus','Não foi possível enviar. Tente novamente.')}
+ });
+};
+socket.on('closed',()=>{clearInterval(clock);show('closed')});
+</script></body></html>
