@@ -39,9 +39,17 @@ io.on('connection',socket=>{
   const quiz=data?.quiz==='saresp'?'saresp':'prince';
   let pin;do{pin=String(Math.floor(100000+Math.random()*900000));}while(rooms.has(pin));
   const room={pin,quiz,host:socket.id,players:new Map(),index:-1,status:'lobby',timer:null,answered:new Set(),deadline:0};rooms.set(pin,room);socket.join(pin);socket.data={pin,host:true};
-  const joinUrl=(process.env.PUBLIC_URL||'').replace(/\/$/,'') || undefined;
-  const target=(joinUrl||socket.handshake.headers.origin||'http://localhost:3000')+(quiz==='saresp'?'/saresp.html':'/')+'?pin='+pin;
-  const qr=await QRCode.toDataURL(target,{width:250,margin:1});cb({ok:true,pin,joinUrl:target,qr});
+  // O endereço dos convites/QR Codes deve ser sempre público em produção.
+  // O Origin do Socket.IO pode não vir preenchido; nunca encaminhar estudantes a localhost.
+  const canonical=quiz==='saresp'
+    ? 'https://desafio-saresp-9ano.onrender.com'
+    : 'https://quiz-principe-preto.onrender.com';
+  const configured=(process.env.PUBLIC_URL||'').trim().replace(/\/$/,'');
+  const isPublic=url=>{try {const u=new URL(url);return u.protocol==='https:'&&!['localhost','127.0.0.1','0.0.0.0','::1','[::1]'].includes(u.hostname);}catch{return false;}};
+  const base=isPublic(configured)?configured:canonical;
+  const target=base+(quiz==='saresp'?'/saresp.html':'/')+'?pin='+pin;
+  const qr=await QRCode.toDataURL(target,{width:250,margin:1});
+  cb({ok:true,pin,joinUrl:target,qr});
  });
  socket.on('join',({pin,name},cb)=>{
   const room=rooms.get(String(pin||''));name=safeName(name);
