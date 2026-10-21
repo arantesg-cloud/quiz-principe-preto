@@ -72,12 +72,24 @@ button:not(:disabled):active{transform:scale(.97);box-shadow:0 1px 0 #0d0d2150}
 #timeNote{color:#ffe7a0;font-size:14px;font-weight:700;text-align:center}
 @keyframes bars{from{height:7px;opacity:.6}to{height:25px;opacity:1}}
 @media(prefers-reduced-motion:reduce){.visualizer i{animation:none!important}}
+</style><style>
+.music-flex{display:grid;grid-template-columns:240px 1fr;gap:16px;align-items:center;margin-top:12px}
+#musicCover{max-width:100%;width:240px;aspect-ratio:16/9;object-fit:cover;border-radius:16px;border:2px solid #ffffff65;box-shadow:0 9px 23px #130b3660}
+.music-copy{min-width:0}
+.music-copy a{display:inline-block;margin-top:7px}
+.lyric-label{margin:0 0 6px;color:#ffe697;font-size:13px;font-weight:800;text-align:left}
+.lyric-paper{margin:0;padding:12px 15px;font-size:clamp(17px,2.5vw,23px)}
+.music-copy .music-explain{margin:8px 0;font-size:13px;text-align:left}
+.video-wrap{max-width:640px;margin:12px auto;border:1px solid #ffffff6c;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#0b0724}
+.video-wrap iframe{display:block;width:100%;height:100%;border:0}
+#playSong{background:linear-gradient(110deg,#ffe269,#7de8e3);color:#1a1737}
+@media(max-width:650px){.music-flex{grid-template-columns:1fr;gap:10px}#musicCover{width:100%;max-height:190px}.music-flex .music-copy{text-align:left}.lyric-paper{font-size:19px}}
 </style></head><body><main><p class="brandstamp">E.E. PEI Deputado José Costa</p><h1>🚀 DESAFIO SARESP 2026</h1><p class="subtitle">9º ANO • Missão Revisão • Aprender, competir e superar!</p>
-<section id="home" class="center"><h2>🎯 36 NOVAS QUESTÕES • 6 DISCIPLINAS</h2><p>🎵 6 canções originais com trechos para interpretar e <b>botão para ouvir música + letra narrada</b>.</p><p>🧮 Matemática recebe <b>mais tempo para fazer contas</b>. Após cada rodada, confira a resposta comentada e o ranking!</p><div class="topic-pills"><span>📖 Português</span><span>🧮 Matemática</span><span>🧬 Ciências</span><span>🏛️ História</span><span>🌍 Geografia</span><span>💬 Inglês</span><span>🎶 Música e leitura</span></div><button id="create">🎓 Criar sala (professor)</button><button id="enter">📱 Entrar (estudante)</button></section>
+<section id="home" class="center"><h2>🎯 36 NOVAS QUESTÕES • 6 DISCIPLINAS</h2><p>🎵 6 canções reais e populares, com <b>áudios oficiais</b>, imagens dos clipes e interpretação de letras.</p><p>🧮 Matemática recebe <b>mais tempo para fazer contas</b>. Após cada rodada, confira a resposta comentada e o ranking!</p><div class="topic-pills"><span>📖 Português</span><span>🧮 Matemática</span><span>🧬 Ciências</span><span>🏛️ História</span><span>🌍 Geografia</span><span>💬 Inglês</span><span>🎶 Música e leitura</span></div><button id="create">🎓 Criar sala (professor)</button><button id="enter">📱 Entrar (estudante)</button></section>
 <section id="join" class="center hidden"><h2>Entrar na partida</h2><label>PIN<br><input id="pinInput" placeholder="6 números" inputmode="numeric" maxlength="6"></label><br><label>Nome ou apelido<br><input id="nameInput" maxlength="24" placeholder="Seu apelido"></label><br><button id="joinBtn">Participar</button></section>
 <section id="lobby" class="center hidden"><h2>Escaneie o QR Code ou use o PIN</h2><div id="pinShow" class="pin"></div><img id="qr" alt="QR Code para entrar" style="width:200px;max-width:100%;background:white;padding:7px;border-radius:12px"><p><a id="joinLink" href="#"></a></p><h3 id="playersCount">0 participantes</h3><p id="lobbyNames"></p><button id="start" disabled>▶ Começar quiz</button></section>
 <section id="studentWait" class="center hidden"><h2>✅ Participação confirmada</h2><p>Bem-vindo(a), <strong id="myName"></strong>!</p><p>O professor iniciará a partida.</p></section>
-<section id="game" class="hidden"><div class="game-meta"><strong id="round"></strong><span id="skillLabel">Revisão SARESP</span><strong id="timer" class="timer">⏱ 55s</strong><strong id="counter"></strong></div><div class="progress-track"><div id="progressFill" style="width:0%"></div></div><div id="artStage" role="img" aria-label="Ilustração animada referente à disciplina"><svg id="artSvg" viewBox="0 0 960 255" preserveAspectRatio="xMidYMid slice"></svg><span id="visualTitle" class="art-tag">Desafio SARESP</span></div><div id="songPanel" class="music-panel hidden"><div class="music-head"><span class="music-title" id="songTitle">🎤 Canção para interpretar</span><div class="music-player"><div class="visualizer" id="visualizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button id="playSong" type="button" aria-label="Ouvir canção original da questão">▶ Ouvir canção</button></div></div><blockquote class="lyric-paper" id="lyricText"></blockquote><p class="music-explain">Canção original produzida para esta revisão: melodia eletrônica e leitura narrada. Toque para ouvir.</p></div><p id="timeNote"></p><h2 id="q"></h2><div class="answers" id="options"></div><p id="answerHint"></p></section>
+<section id="game" class="hidden"><div class="game-meta"><strong id="round"></strong><span id="skillLabel">Revisão SARESP</span><strong id="timer" class="timer">⏱ 55s</strong><strong id="counter"></strong></div><div class="progress-track"><div id="progressFill" style="width:0%"></div></div><div id="artStage" role="img" aria-label="Ilustração animada referente à disciplina"><svg id="artSvg" viewBox="0 0 960 255" preserveAspectRatio="xMidYMid slice"></svg><span id="visualTitle" class="art-tag">Desafio SARESP</span></div><div id="songPanel" class="music-panel hidden"><div class="music-head"><span class="music-title" id="songTitle">🎤 Ouça e interprete</span><div class="music-player"><button id="playSong" type="button" aria-label="Reproduzir gravação real no vídeo oficial">▶ Ouvir gravação real</button></div></div><div class="music-flex"><img id="musicCover" alt="Capa do videoclipe oficial" loading="lazy" referrerpolicy="no-referrer"><div class="music-copy"><p class="lyric-label">🎤 Trecho curto da letra original</p><blockquote class="lyric-paper" id="lyricText"></blockquote><p class="music-explain">Ouça a gravação oficial para analisar a letra e os recursos expressivos.</p><a id="musicOfficialLink" href="#" target="_blank" rel="noopener noreferrer">Abrir vídeo oficial ↗</a></div></div><div id="videoWrap" class="video-wrap hidden"><iframe id="officialVideo" title="Clipe musical oficial no YouTube" allow="autoplay; encrypted-media; picture-in-picture; accelerometer; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="music-explain">O áudio é reproduzido no player do YouTube. Se não carregar, abra o vídeo oficial pelo link.</p></div><p id="timeNote"></p><h2 id="q"></h2><div class="answers" id="options"></div><p id="answerHint"></p></section>
 <section id="result" class="hidden center"><span id="starBurst">🎉✨🎉</span><h2 id="resultTitle"></h2><div id="correctBox"></div><p id="feedback"></p><h2>🏆 Ranking ao vivo</h2><div id="ranking"></div><button id="next" class="hidden">Próxima questão →</button><p id="waitNext">Aguarde o professor.</p></section>
 <section id="reflection" class="hidden"><h2>✍️ Bilhete de saída: o que aprendi?</h2>
 <p>Responda com suas palavras. Não existe pontuação automática nesta etapa: sua professora vai ler suas respostas.</p>
@@ -93,66 +105,40 @@ button:not(:disabled):active{transform:scale(.97);box-shadow:0 1px 0 #0d0d2150}
 </section>
 <section id="final" class="hidden"><h2>🏆 Pódio final</h2><div class="podium" id="podium"></div><h2>Classificação completa</h2><div id="finalRanking"></div><p>🌟 Conhecimento é conquista: continue estudando!</p><p><button onclick="location.href='/saresp.html'">Nova partida</button></p></section>
 <section id="closed" class="hidden center"><h2>Sala encerrada</h2><p>O professor desconectou. Peça um novo PIN.</p><button onclick="location.href='/saresp.html'">Voltar</button></section>
-<p style="font-size:14px">Questões e canções originais para revisão baseadas no Roteiro de Estudos SARESP 2026 do 9º ano. Não são itens oficiais do exame. Use apenas apelidos.</p></main><script src="/socket.io/socket.io.js"></script><script>
+<p style="font-size:14px">Questões autorais de revisão baseadas no Roteiro de Estudos SARESP 2026 do 9º ano. Áudio e imagens das canções são carregados pelo YouTube; direitos dos respectivos artistas. Não são itens oficiais do exame. Use apelidos.</p></main><script src="/socket.io/socket.io.js"></script><script>
 const socket=io(),$=id=>document.getElementById(id),screens=['home','join','lobby','studentWait','game','result','reflection','final','closed'];
 let role='',selected=-1,clock,lastReport=null;
-let activeSong=null,melodyContext=null,songStopper=null,songPlaying=false;
-const MELODIES=[
- [0,2,4,7,4,2,0,2,4,5,7,5,4,2,0,0,7,5,4,2,0,2,4,0],
- [0,3,5,7,5,3,0,3,5,8,7,5,3,0,3,5,7,5,3,0,2,3,0,0],
- [0,2,3,5,7,5,3,2,0,2,5,7,8,7,5,3,2,0,3,5,7,5,2,0],
- [0,4,7,4,2,0,2,5,7,9,7,5,4,2,0,4,7,5,4,2,0,2,4,0],
- [0,2,5,4,2,0,3,5,7,5,3,2,0,2,4,7,9,7,5,4,2,0,3,0],
- [0,2,4,2,0,4,5,7,5,4,2,4,7,9,7,5,4,2,0,2,4,5,2,0]
-];
-const scaleSteps=[0,2,4,5,7,9,11,12,14,16,17];
+let activeSong=null,songPlaying=false;
 function clearSong(){
- clearTimeout(songStopper);
- if(typeof speechSynthesis!=='undefined')speechSynthesis.cancel();
- if(melodyContext){const old=melodyContext;melodyContext=null;old.close().catch(()=>{});}
- songPlaying=false;$('playSong').textContent='▶ Ouvir canção';
- $('visualizer').classList.remove('playing');
+ const frame=$('officialVideo');
+ if(frame)frame.removeAttribute('src');
+ $('videoWrap').classList.add('hidden');
+ songPlaying=false;
+ $('playSong').textContent='▶ Ouvir gravação real';
 }
-function note(ctx,freq,when,len,amp=0.14,wave='triangle'){
- const osc=ctx.createOscillator(),volume=ctx.createGain();
- osc.type=wave;osc.frequency.setValueAtTime(freq,when);
- volume.gain.setValueAtTime(0,when);volume.gain.linearRampToValueAtTime(amp,when+0.025);
- volume.gain.exponentialRampToValueAtTime(0.001,when+len);
- osc.connect(volume);volume.connect(ctx.destination);osc.start(when);osc.stop(when+len+0.02);
-}
-function playOriginalSong(){
+function playRealSong(){
  if(songPlaying){clearSong();return;}
- if(!activeSong)return;
- const Audio=window.AudioContext||window.webkitAudioContext;
- if(!Audio){alert('O navegador não oferece reprodução musical. A letra continua disponível na tela.');return;}
- try {
-  melodyContext=new Audio();
-  // Acione o áudio dentro do clique para manter compatibilidade com celulares.
-  melodyContext.resume().catch(()=>{});
-  songPlaying=true;$('playSong').textContent='■ Parar música';$('visualizer').classList.add('playing');
-  const ctx=melodyContext,start=ctx.currentTime+0.12;
-  const melody=MELODIES[(activeSong.index-1)%MELODIES.length],beat=0.49;
-  const base=220+(activeSong.index%3)*40;
-  melody.forEach((step,i)=>{
-    const f=base*Math.pow(2,scaleSteps[step]/12);
-    note(ctx,f,start+i*beat,beat*0.88,0.12,'triangle');
-    if(i%4===0){note(ctx,base/2,start+i*beat,beat*2.0,0.048,'sine');}
-    if(i%2===0){note(ctx,base/4,start+i*beat,0.12,0.030,'square');}
-  });
-  // A narração vocal original acompanha o arranjo eletrônico, sem áudio de terceiros.
-  if(typeof speechSynthesis!=='undefined'&&typeof SpeechSynthesisUtterance!=='undefined'){
-   speechSynthesis.cancel();
-   const speech=new SpeechSynthesisUtterance(activeSong.lyric.replace(/\n/g,'. '));
-   speech.lang='pt-BR';speech.rate=.84;speech.pitch=1.11;speech.volume=.94;
-   const voices=speechSynthesis.getVoices();
-   const brazilian=voices.find(v=>v.lang.toLowerCase()==='pt-br');
-   if(brazilian)speech.voice=brazilian;
-   speechSynthesis.speak(speech);
-  }
-  songStopper=setTimeout(clearSong,19000);
- }catch(err){clearSong();alert('O áudio não pôde ser iniciado neste aparelho. Verifique o volume e tente novamente.');}
+ if(!activeSong||!/^[A-Za-z0-9_-]{11}$/.test(activeSong.audioVideoId||''))return;
+ const id=activeSong.audioVideoId,from=Number.isInteger(activeSong.clipStart)?activeSong.clipStart:0;
+ const url='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&playsinline=1&rel=0&start='+Math.max(0,from);
+ $('officialVideo').src=url;
+ $('videoWrap').classList.remove('hidden');
+ $('playSong').textContent='■ Parar reprodução';
+ songPlaying=true;
 }
-
+function showSongInfo(d){
+ activeSong=d.audioVideoId?d:null;
+ $('songPanel').classList.toggle('hidden',!activeSong);
+ $('artStage').classList.toggle('hidden',!!activeSong);
+ if(!activeSong)return;
+ const id=d.audioVideoId;
+ txt('songTitle','🎵 '+d.song+' — '+d.songArtist);
+ txt('lyricText',d.lyric||'');
+ $('musicCover').src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg';
+ $('musicCover').alt='Imagem de capa do vídeo oficial: '+d.song+' — '+d.songArtist;
+ $('musicOfficialLink').href='https://www.youtube.com/watch?v='+id;
+ $('musicOfficialLink').textContent='Abrir vídeo oficial no YouTube ↗';
+}
 
 const artIcons={
  literatura:['🏙️','☁️','📰','🔗','🗣️','📣'],
@@ -194,7 +180,7 @@ function renderArt(d){
 }
 
 const show=id=>{screens.forEach(x=>$(x).classList.toggle('hidden',x!==id));$('teacherPanel').classList.toggle('hidden',!(role==='host'&&(id==='result'||id==='final')))};
-$('playSong').onclick=playOriginalSong;
+$('playSong').onclick=playRealSong;
 const txt=(id,value)=>$(id).textContent=value;
 function ranking(id,data){$(id).replaceChildren();data.forEach(p=>{let d=document.createElement('div');d.className='rank';let a=document.createElement('span'),b=document.createElement('b');a.textContent=p.place+'º '+p.name;b.textContent=p.score.toLocaleString('pt-BR')+' pts';d.append(a,b);$(id).append(d)})}
 $('create').onclick=()=>socket.emit('create',{quiz:'saresp'},r=>{if(!r?.ok)return alert('Erro ao criar sala');role='host';txt('pinShow',r.pin);$('qr').src=r.qr;$('joinLink').href=r.joinUrl;txt('joinLink',r.joinUrl);show('lobby')});
@@ -203,10 +189,8 @@ $('pinInput').value=new URLSearchParams(location.search).get('pin')||'';if($('pi
 $('joinBtn').onclick=()=>socket.emit('join',{pin:$('pinInput').value.trim(),name:$('nameInput').value.trim()},r=>{if(!r?.ok)return alert(r?.error||'Erro ao entrar');role='player';txt('myName',r.name);show('studentWait')});
 $('start').onclick=()=>socket.emit('start');$('next').onclick=()=>socket.emit('next');
 socket.on('roster',r=>{if(role==='host'){txt('playersCount',r.count+' participantes');txt('lobbyNames',r.players.map(p=>p.name).join(' • '));$('start').disabled=r.count===0}});
-socket.on('question',d=>{clearSong();activeSong=d.lyric?d:null;selected=-1;show('game');
- $('songPanel').classList.toggle('hidden',!d.lyric);
- if(d.lyric){txt('songTitle','🎵 '+d.song);txt('lyricText',d.lyric);}
- txt('timeNote',d.skill==='Matemática'?'🧮 Tempo ampliado para cálculos: '+d.duration+' segundos':d.lyric?'🎧 Ouça o trecho, leia e interprete: '+d.duration+' segundos':'⏱ Tempo de resposta: '+d.duration+' segundos');
+socket.on('question',d=>{clearSong();selected=-1;show('game');showSongInfo(d);
+ txt('timeNote',d.skill==='Matemática'?'🧮 Tempo ampliado para cálculos: '+d.duration+' segundos':d.audioVideoId?'🎧 Escute o vídeo oficial e interprete a letra: '+d.duration+' segundos':'⏱ Tempo de resposta: '+d.duration+' segundos');
  txt('round','Pergunta '+d.index+' de '+d.total);txt('q',d.q);txt('skillLabel',d.skill||'Revisão');$('progressFill').style.width=((d.index-1)/d.total*100)+'%';renderArt(d);txt('counter','');txt('answerHint',role==='host'?'Acompanhe o total de respostas':'Selecione uma alternativa!');$('options').replaceChildren();d.a.forEach((a,i)=>{let b=document.createElement('button');b.className='answer';b.textContent=['▲','◆','●','■'][i]+' '+a;b.disabled=role==='host';b.onclick=()=>{if(selected!==-1)return;selected=i;socket.emit('answer',i,r=>{if(!r?.ok)txt('answerHint','Erro ao registrar resposta')});[...$('options').children].forEach(x=>x.disabled=true);b.classList.add('chosen');txt('answerHint','Resposta enviada!')};$('options').append(b)});clearInterval(clock);const update=()=>{let remain=Math.max(0,Math.ceil((d.deadline-Date.now())/1000));txt('timer','⏱ '+remain+'s');$('timer').classList.toggle('urgent',remain<=10);};update();clock=setInterval(update,250)});
 socket.on('answered',d=>{if(role==='host')txt('counter',d.count+'/'+d.total+' respostas')});
 socket.on('reveal',d=>{clearSong();clearInterval(clock);show('result');txt('resultTitle',role==='host'?'✅ Resposta comentada':selected<0?'⏰ Tempo esgotado':selected===d.correct?'🎉 Você acertou!':'💡 Hora de aprender!');txt('correctBox',('ABCD'[d.correct])+' — '+d.correctText);txt('feedback','📚 EXPLICAÇÃO: '+d.explanation);$('starBurst').classList.toggle('play',selected===d.correct);ranking('ranking',d.ranking);$('next').classList.toggle('hidden',role!=='host');$('waitNext').classList.toggle('hidden',role==='host')});
