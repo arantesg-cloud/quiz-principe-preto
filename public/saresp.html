@@ -120,14 +120,15 @@ function note(ctx,freq,when,len,amp=0.14,wave='triangle'){
  volume.gain.exponentialRampToValueAtTime(0.001,when+len);
  osc.connect(volume);volume.connect(ctx.destination);osc.start(when);osc.stop(when+len+0.02);
 }
-async function playOriginalSong(){
+function playOriginalSong(){
  if(songPlaying){clearSong();return;}
  if(!activeSong)return;
  const Audio=window.AudioContext||window.webkitAudioContext;
  if(!Audio){alert('O navegador não oferece reprodução musical. A letra continua disponível na tela.');return;}
  try {
   melodyContext=new Audio();
-  await melodyContext.resume();
+  // Acione o áudio dentro do clique para manter compatibilidade com celulares.
+  melodyContext.resume().catch(()=>{});
   songPlaying=true;$('playSong').textContent='■ Parar música';$('visualizer').classList.add('playing');
   const ctx=melodyContext,start=ctx.currentTime+0.12;
   const melody=MELODIES[(activeSong.index-1)%MELODIES.length],beat=0.49;
