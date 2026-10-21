@@ -185,13 +185,13 @@ module.exports = [
   {
     "q": "Leia: “Na terça-feira, a biblioteca recebeu 40 exemplares. Foi a melhor ação da escola.” Qual parte expressa opinião?",
     "a": [
-      "“a iniciativa foi a melhor ação da escola”",
+      "“Foi a melhor ação da escola”",
       "“na terça-feira”",
       "“a biblioteca recebeu”",
       "“40 exemplares”"
     ],
     "c": 0,
-    "e": "“Melhor ação” é um julgamento de valor, enquanto dia, local e quantidade podem ser verificados.",
+    "e": "“Foi a melhor ação da escola” é uma avaliação subjetiva: a expressão “melhor ação” revela uma opinião, diferentemente do dia e da quantidade de exemplares recebidos.",
     "skill": "Língua Portuguesa",
     "code": "Fato e opinião",
     "emoji": "📖",
