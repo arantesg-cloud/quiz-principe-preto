@@ -31,7 +31,7 @@ function assessment(room){
 const safeName=x=>String(x||'').trim().slice(0,24).replace(/[<>]/g,'');
 const leaderboard=room=>[...room.players.values()].map(p=>({name:p.name,score:p.score,id:p.id})).sort((a,b)=>b.score-a.score).map(({name,score},i)=>({name,score,place:i+1}));
 function broadcast(room){io.to(room.pin).emit('roster',{count:room.players.size,players:leaderboard(room)});}
-function questionPayload(room){const x=getQuestions(room)[room.index];return {index:room.index+1,total:getQuestions(room).length,q:x.q,a:x.a,duration:x.duration||(room.quiz==='saresp'?55:30),skill:x.skill,code:x.code,emoji:x.emoji||'',art:x.art||'',visual:x.visual||0,lyric:x.lyric||null,song:x.song||null};}
+function questionPayload(room){const x=getQuestions(room)[room.index];return {index:room.index+1,total:getQuestions(room).length,q:x.q,a:x.a,duration:x.duration||(room.quiz==='saresp'?55:30),skill:x.skill,code:x.code,emoji:x.emoji||'',art:x.art||'',visual:x.visual||0,lyric:x.lyric||null,song:x.song||null,songArtist:x.songArtist||null,audioVideoId:x.audioVideoId||null,clipStart:x.clipStart||0,musicMode:x.musicMode||null};}
 function reveal(room){if(room.status!=='question')return;room.status='reveal';clearTimeout(room.timer);const x=getQuestions(room)[room.index];io.to(room.pin).emit('reveal',{correct:x.c,correctText:x.a[x.c],explanation:x.e,skill:x.skill,ranking:leaderboard(room)});io.to(room.host).emit('teacherReport',assessment(room));}
 function finish(room){room.status='finished';io.to(room.pin).emit('finished',{ranking:leaderboard(room)});io.to(room.host).emit('teacherReport',assessment(room));}
 io.on('connection',socket=>{
