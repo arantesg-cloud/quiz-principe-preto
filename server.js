@@ -4,7 +4,8 @@ const {Server}=require('socket.io');
 const QRCode=require('qrcode');
 const questions=require('./questions');
 const questions9=require('./questions9_v3');
-const getQuestions=room=>room.quiz==='saresp'?questions9:questions;
+const questions10=require('./questions9_last10');
+const getQuestions=room=>room.quiz==='saresp10'?questions10:room.quiz==='saresp'?questions9:questions;
 const app=express(),server=http.createServer(app),io=new Server(server);
 app.use(express.static('public'));
 app.get('/health',(req,res)=>res.send('ok'));
@@ -31,23 +32,23 @@ function assessment(room){
 const safeName=x=>String(x||'').trim().slice(0,24).replace(/[<>]/g,'');
 const leaderboard=room=>[...room.players.values()].map(p=>({name:p.name,score:p.score,id:p.id})).sort((a,b)=>b.score-a.score).map(({name,score},i)=>({name,score,place:i+1}));
 function broadcast(room){io.to(room.pin).emit('roster',{count:room.players.size,players:leaderboard(room)});}
-function questionPayload(room){const x=getQuestions(room)[room.index];return {index:room.index+1,total:getQuestions(room).length,q:x.q,a:x.a,duration:x.duration||(room.quiz==='saresp'?55:30),skill:x.skill,code:x.code,emoji:x.emoji||'',art:x.art||'',visual:x.visual||0,lyric:x.lyric||null,song:x.song||null,songArtist:x.songArtist||null,audioVideoId:x.audioVideoId||null,clipStart:x.clipStart||0,musicMode:x.musicMode||null,difficulty:x.difficulty||'Médio',imageKey:x.imageKey||null,imageAlt:x.imageAlt||null};}
+function questionPayload(room){const x=getQuestions(room)[room.index];return {index:room.index+1,total:getQuestions(room).length,q:x.q,a:x.a,duration:x.duration||((room.quiz==='saresp'||room.quiz==='saresp10')?55:30),skill:x.skill,code:x.code,emoji:x.emoji||'',art:x.art||'',visual:x.visual||0,lyric:x.lyric||null,song:x.song||null,songArtist:x.songArtist||null,audioVideoId:x.audioVideoId||null,clipStart:x.clipStart||0,musicMode:x.musicMode||null,difficulty:x.difficulty||'Médio',imageKey:x.imageKey||null,imageAlt:x.imageAlt||null};}
 function reveal(room){if(room.status!=='question')return;room.status='reveal';clearTimeout(room.timer);const x=getQuestions(room)[room.index];io.to(room.pin).emit('reveal',{correct:x.c,correctText:x.a[x.c],explanation:x.e,skill:x.skill,ranking:leaderboard(room)});io.to(room.host).emit('teacherReport',assessment(room));}
 function finish(room){room.status='finished';io.to(room.pin).emit('finished',{ranking:leaderboard(room)});io.to(room.host).emit('teacherReport',assessment(room));}
 io.on('connection',socket=>{
  socket.on('create',async(data,cb)=>{
-  const quiz=data?.quiz==='saresp'?'saresp':'prince';
+  const quiz=data?.quiz==='saresp10'?'saresp10':data?.quiz==='saresp'?'saresp':'prince';
   let pin;do{pin=String(Math.floor(100000+Math.random()*900000));}while(rooms.has(pin));
   const room={pin,quiz,host:socket.id,players:new Map(),index:-1,status:'lobby',timer:null,answered:new Set(),deadline:0};rooms.set(pin,room);socket.join(pin);socket.data={pin,host:true};
   // O endereço dos convites/QR Codes deve ser sempre público em produção.
   // O Origin do Socket.IO pode não vir preenchido; nunca encaminhar estudantes a localhost.
-  const canonical=quiz==='saresp'
+  const canonical=(quiz==='saresp'||quiz==='saresp10')
     ? 'https://desafio-saresp-9ano.onrender.com'
     : 'https://quiz-principe-preto.onrender.com';
   const configured=(process.env.PUBLIC_URL||'').trim().replace(/\/$/,'');
   const isPublic=url=>{try {const u=new URL(url);return u.protocol==='https:'&&!['localhost','127.0.0.1','0.0.0.0','::1','[::1]'].includes(u.hostname);}catch{return false;}};
   const base=isPublic(configured)?configured:canonical;
-  const target=base+(quiz==='saresp'?'/saresp.html':'/')+'?pin='+pin;
+  const target=base+(quiz==='saresp10'?'/saresp-10.html':quiz==='saresp'?'/saresp.html':'/')+'?pin='+pin;
   const qr=await QRCode.toDataURL(target,{width:250,margin:1});
   cb({ok:true,pin,joinUrl:target,qr});
  });
@@ -78,5 +79,5 @@ io.on('connection',socket=>{
  });
  socket.on('disconnect',()=>{const r=rooms.get(socket.data?.pin);if(!r)return;if(r.host===socket.id){clearTimeout(r.timer);io.to(r.pin).emit('closed');rooms.delete(r.pin);}else{const p=r.players.get(socket.id);if(r.status==='lobby')r.players.delete(socket.id);else if(p)p.connected=false;broadcast(r);if(r.status==='question'&&[...r.players.values()].filter(p=>p.connected).every(p=>r.answered.has(p.id)))reveal(r);}});
 });
-function launch(r){r.status='question';r.answered=new Set();const duration=(getQuestions(r)[r.index].duration||(r.quiz==='saresp'?55:30))*1000;r.deadline=Date.now()+duration;io.to(r.pin).emit('question',{...questionPayload(r),deadline:r.deadline});io.to(r.host).emit('answered',{count:0,total:r.players.size});r.timer=setTimeout(()=>reveal(r),duration);}
+function launch(r){r.status='question';r.answered=new Set();const duration=(getQuestions(r)[r.index].duration||((r.quiz==='saresp'||r.quiz==='saresp10')?55:30))*1000;r.deadline=Date.now()+duration;io.to(r.pin).emit('question',{...questionPayload(r),deadline:r.deadline});io.to(r.host).emit('answered',{count:0,total:r.players.size});r.timer=setTimeout(()=>reveal(r),duration);}
 server.listen(process.env.PORT||3000,()=>console.log('Quiz pronto na porta '+(process.env.PORT||3000)));
