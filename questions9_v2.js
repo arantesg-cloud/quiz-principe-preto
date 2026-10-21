@@ -1,120 +1,143 @@
-// Banco de questões inéditas para revisão SARESP, 9º ano (2026).
-// Letras e melodias das seis canções são originais desta atividade; não representam músicas comerciais.
-// Tempos específicos por questão em segundos, incluindo cálculo e escuta.
+// Revisão SARESP 9º ano: 36 questões autorais, sendo seis baseadas em trechos curtos de canções reais.
+// A reprodução utiliza somente vídeos hospedados nos canais oficiais do YouTube, sem copiar o áudio.
 module.exports=[
   {
-    "q": "Na letra, qual recurso expressivo aparece em “o futuro bate à porta”?",
+    "q": "Na canção “Nosso Quadro”, qual interpretação melhor explica o sentido do trecho apresentado?",
     "a": [
-      "Eufemismo",
-      "Personificação",
-      "Comparação explícita",
-      "Hipérbole"
+      "Um retrato que foi pendurado na parede",
+      "A lembrança de um futuro imaginado, que não aconteceu",
+      "Uma paisagem visitada durante uma viagem",
+      "Um plano que certamente será realizado"
     ],
     "c": 1,
-    "e": "O futuro, ideia abstrata, recebe a ação humana de bater à porta. Esse recurso é uma personificação.",
+    "e": "O eu lírico imagina uma vida em conjunto que não se concretizou. A expressão “só existe na minha cabeça” indica um futuro idealizado, não uma lembrança de algo efetivamente vivido.",
     "skill": "Língua Portuguesa",
-    "code": "Figuras de linguagem",
+    "code": "Interpretação e inferência em letra de música",
     "emoji": "📖",
     "art": "literatura",
     "visual": 0,
-    "duration": 85,
-    "lyric": "No meu bairro o relógio corre,\nmas a rua aprende a esperar.\nO futuro bate à porta\nsem ninguém o convidar.",
-    "song": "Quando o futuro chama"
+    "duration": 110,
+    "lyric": "Nossa vida no mato só existe na minha cabeça",
+    "song": "Nosso Quadro",
+    "songArtist": "Ana Castela",
+    "audioVideoId": "vzEIwc0rG8Y",
+    "clipStart": 40,
+    "musicMode": "youtube_official"
   },
   {
-    "q": "Qual crítica social pode ser inferida da letra?",
+    "q": "No trecho de “Coração Partido”, a expressão destacada é utilizada principalmente como...",
     "a": [
-      "A dificuldade de encontrar vitrines nos bairros",
-      "A ausência de formas de pagamento no comércio",
-      "O estímulo ao consumo e ao endividamento",
-      "A impossibilidade de sonhar com o futuro"
+      "Descrição médica literal",
+      "Comparação introduzida por “como”",
+      "Metáfora para sofrimento emocional",
+      "Eufemismo para uma perda material"
     ],
     "c": 2,
-    "e": "A imagem dos sonhos vendidos em parcelas e dos juros sobre a tristeza associa publicidade, compra a crédito e frustração, criticando o consumo.",
+    "e": "O coração não está fisicamente dividido: a imagem de um coração partido representa dor amorosa. A transferência de sentido caracteriza uma metáfora.",
     "skill": "Língua Portuguesa",
-    "code": "Crítica social e publicidade",
+    "code": "Metáfora e conotação",
     "emoji": "📖",
     "art": "literatura",
     "visual": 1,
-    "duration": 85,
-    "lyric": "Meu bolso dança vazio\nna vitrine iluminada.\nVendem sonhos em parcelas,\nminha alegria fica adiada.",
-    "song": "Vitrine de sonhos"
+    "duration": 110,
+    "lyric": "você deixou meu coração partido",
+    "song": "Coração Partido",
+    "songArtist": "Grupo Menos É Mais",
+    "audioVideoId": "n5wxZ_OBUXk",
+    "clipStart": 52,
+    "musicMode": "youtube_official"
   },
   {
-    "q": "Em qual par de expressões da letra há oposição de sentidos?",
+    "q": "Ao ouvir “Ilusão de Ótica”, como o trecho se relaciona ao título e ao sentido da canção?",
     "a": [
-      "“pressa” e “pausa”",
-      "“cidade” e “rua”",
-      "“luz” e “sol”",
-      "“caminho” e “direção”"
+      "A aparência de bem-estar pode esconder sentimentos diferentes",
+      "O personagem sofre um problema clínico de visão",
+      "As pessoas enxergam sempre de maneira idêntica",
+      "O eu lírico afirma estar completamente recuperado"
     ],
     "c": 0,
-    "e": "Pressa e pausa apresentam ideias opostas. A aproximação entre sentidos contrários é característica da antítese.",
+    "e": "A letra diferencia a aparência exterior e o estado emocional. A ideia de “ilusão de ótica” sugere que aquilo que parece verdadeiro nem sempre revela o que a pessoa sente.",
     "skill": "Língua Portuguesa",
-    "code": "Antítese",
+    "code": "Implícitos, aparência e realidade",
     "emoji": "📖",
     "art": "literatura",
     "visual": 2,
-    "duration": 85,
-    "lyric": "A cidade veste luz,\nmas eu procuro direção.\nEntre a pressa e a pausa\nescuto o meu coração.",
-    "song": "Entre dois tempos"
+    "duration": 110,
+    "lyric": "Por fora eu tava bem",
+    "song": "Ilusão de Ótica",
+    "songArtist": "Matheus & Kauan e Ana Castela",
+    "audioVideoId": "THAc6Y_UltE",
+    "clipStart": 24,
+    "musicMode": "youtube_official"
   },
   {
-    "q": "Na letra, a palavra “pois” estabelece qual relação entre as ideias?",
+    "q": "No trecho de “Golden”, a repetição da palavra “up” contribui principalmente para...",
     "a": [
-      "Alternância",
-      "Condição",
-      "Oposição",
-      "Explicação ou causa"
+      "Mostrar uma regra gramatical de passado",
+      "Indicar que a ação não pode se repetir",
+      "Criar uma contradição sobre imobilidade",
+      "Reforçar a ideia de ascensão e determinação"
     ],
     "c": 3,
-    "e": "O conectivo “pois” introduz uma justificativa: a praça pede árvores porque a sombra oferece acolhimento.",
+    "e": "A repetição intensifica a ideia de subir, crescer ou avançar. Junto da música, pode destacar energia, confiança e superação.",
     "skill": "Língua Portuguesa",
-    "code": "Conjunções de causa",
+    "code": "Repetição e efeito de sentido em inglês",
     "emoji": "📖",
     "art": "literatura",
     "visual": 3,
-    "duration": 85,
-    "lyric": "Se a praça tivesse voz,\npediria mais árvores,\npois a sombra acolhe todos\nquando o sol é mais forte.",
-    "song": "Voz da praça"
+    "duration": 105,
+    "lyric": "We're going up, up, up",
+    "song": "Golden",
+    "songArtist": "HUNTR/X – KPop Demon Hunters",
+    "audioVideoId": "yebNIHKAC4A",
+    "clipStart": 36,
+    "musicMode": "youtube_official"
   },
   {
-    "q": "A letra sugere que o consumo pode ser insuficiente para...",
+    "q": "A expressão “birds of a feather”, na música de Billie Eilish, associa a imagem dos pássaros a qual ideia?",
     "a": [
-      "Garantir que anúncios cheguem ao público",
-      "Resolver sentimentos e questões pessoais",
-      "Aumentar a oferta de roupas nas lojas",
-      "Produzir campanhas publicitárias"
+      "Concorrência entre grupos rivais",
+      "Afinidade e desejo de permanecer junto",
+      "Necessidade de aprender a voar",
+      "Descrição científica das espécies"
     ],
     "c": 1,
-    "e": "A personagem compra uma aparência nova, mas não encontra solução. A letra critica a promessa de felicidade associada ao consumo.",
+    "e": "A expressão idiomática remete à afinidade entre pessoas e ao desejo de permanecer unidas. A leitura figurada é diferente de descrever literalmente aves.",
     "skill": "Língua Portuguesa",
-    "code": "Inferência e crítica",
+    "code": "Linguagem figurada e expressão idiomática",
     "emoji": "📖",
     "art": "literatura",
     "visual": 4,
-    "duration": 85,
-    "lyric": "Na tela sorri a promessa\nde felicidade em promoção.\nCompro uma nova aparência,\nmas não encontro solução.",
-    "song": "Promoção de felicidade"
+    "duration": 115,
+    "lyric": "Birds of a feather, we should stick together",
+    "song": "BIRDS OF A FEATHER",
+    "songArtist": "Billie Eilish",
+    "audioVideoId": "V9PVRfjEBTI",
+    "clipStart": 62,
+    "musicMode": "youtube_official"
   },
   {
-    "q": "O eu lírico defende principalmente...",
+    "q": "Na canção “APT.”, o uso repetido de uma expressão em coreano no refrão produz qual efeito?",
     "a": [
-      "Que todos adotem a mesma forma de falar",
-      "Que sotaques diferentes impedem a comunicação",
-      "Que o sotaque expressa identidade e merece respeito",
-      "Que a norma-padrão deve deixar de ser ensinada"
+      "Elimina a importância do ritmo",
+      "Imita um texto científico formal",
+      "Cria uma marca sonora fácil de reconhecer e repetir",
+      "Evita o contato entre diferentes idiomas"
     ],
     "c": 2,
-    "e": "O sotaque é valorizado como marca de história e pertencimento. Desqualificar alguém por sua variedade de fala é preconceito linguístico.",
+    "e": "A repetição ajuda a fixar o refrão e cria uma marca rítmica da canção. O uso do coreano junto de outras línguas também mostra a circulação cultural na música pop.",
     "skill": "Língua Portuguesa",
-    "code": "Variedades linguísticas",
+    "code": "Repetição, multimodalidade e contato entre línguas",
     "emoji": "📖",
     "art": "literatura",
     "visual": 5,
-    "duration": 85,
-    "lyric": "Meu sotaque conta a estrada,\ncada palavra é um lugar.\nQuem despreza a minha fala\nnão escuta o meu cantar.",
-    "song": "Minha voz, minha história"
+    "duration": 105,
+    "lyric": "아파트, 아파트",
+    "song": "APT.",
+    "songArtist": "ROSÉ e Bruno Mars",
+    "audioVideoId": "8Ebqe2Dbzls",
+    "clipStart": 6,
+    "musicMode": "youtube_official"
   },
   {
     "q": "Leia: “Na terça-feira, a biblioteca recebeu 40 exemplares. A iniciativa foi a melhor ação da escola.” Qual trecho expressa opinião?",
