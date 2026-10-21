@@ -84,12 +84,24 @@ button:not(:disabled):active{transform:scale(.97);box-shadow:0 1px 0 #0d0d2150}
 .video-wrap iframe{display:block;width:100%;height:100%;border:0}
 #playSong{background:linear-gradient(110deg,#ffe269,#7de8e3);color:#1a1737}
 @media(max-width:650px){.music-flex{grid-template-columns:1fr;gap:10px}#musicCover{width:100%;max-height:190px}.music-flex .music-copy{text-align:left}.lyric-paper{font-size:19px}}
+</style><style>
+.level-pills{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px auto}
+.level-pills span,.level-chip{display:inline-flex;align-items:center;gap:7px;font-weight:800;border-radius:999px;padding:9px 15px;font-size:14px;letter-spacing:.1px;border:2px solid transparent}
+.lv-easy{background:#def9e9;color:#14613e;border-color:#7fdab1!important}
+.lv-medium{background:#fff4cc;color:#735009;border-color:#e7c55f!important}
+.lv-hard{background:#ffe0e4;color:#921b40;border-color:#e892a0!important}
+#artStage{max-height:none;height:auto;aspect-ratio:960/270;background:linear-gradient(130deg,#3f418a,#547cae);animation:popIn .56s ease-out;border:2px solid #dfe6ff80}
+#artStage #illustration{display:block;width:100%;height:100%;object-fit:cover;border-radius:19px}
+#artStage .art-tag{bottom:12px;left:14px;background:#160e3cc9;color:#fff;padding:7px 13px;font-size:13px}
+.game-meta{gap:9px}
+#difficultyLabel{font-size:14px}
+@media(max-width:580px){#artStage{aspect-ratio:960/330}#artStage #illustration{object-fit:cover}#difficultyLabel{padding:6px 10px;font-size:12px}}
 </style></head><body><main><p class="brandstamp">E.E. PEI Deputado José Costa</p><h1>🚀 DESAFIO SARESP 2026</h1><p class="subtitle">9º ANO • Missão Revisão • Aprender, competir e superar!</p>
-<section id="home" class="center"><h2>🎯 36 NOVAS QUESTÕES • 6 DISCIPLINAS</h2><p>🎵 6 canções reais e populares, com <b>áudios oficiais</b>, imagens dos clipes e interpretação de letras.</p><p>🧮 Matemática recebe <b>mais tempo para fazer contas</b>. Após cada rodada, confira a resposta comentada e o ranking!</p><div class="topic-pills"><span>📖 Português</span><span>🧮 Matemática</span><span>🧬 Ciências</span><span>🏛️ História</span><span>🌍 Geografia</span><span>💬 Inglês</span><span>🎶 Música e leitura</span></div><button id="create">🎓 Criar sala (professor)</button><button id="enter">📱 Entrar (estudante)</button></section>
+<section id="home" class="center"><h2>🎯 36 DESAFIOS • 3 NÍVEIS • 6 DISCIPLINAS</h2><p>🎵 6 canções reais e populares, com <b>áudios oficiais</b>, imagens dos clipes e interpretação de letras.</p><p>🧮 Matemática recebe <b>mais tempo para fazer contas</b>. Após cada rodada, confira a resposta comentada e o ranking!</p><div class="level-pills"><span class="lv-easy">🟢 10 fáceis</span><span class="lv-medium">🟡 17 médias</span><span class="lv-hard">🔴 9 difíceis</span></div><p>🖼️ 30 imagens ilustradas diferentes + 6 videoclipes musicais. As respostas são explicadas depois de cada pergunta.</p><div class="topic-pills"><span>📖 Português</span><span>🧮 Matemática</span><span>🧬 Ciências</span><span>🏛️ História</span><span>🌍 Geografia</span><span>💬 Inglês</span><span>🎶 Música e leitura</span></div><button id="create">🎓 Criar sala (professor)</button><button id="enter">📱 Entrar (estudante)</button></section>
 <section id="join" class="center hidden"><h2>Entrar na partida</h2><label>PIN<br><input id="pinInput" placeholder="6 números" inputmode="numeric" maxlength="6"></label><br><label>Nome ou apelido<br><input id="nameInput" maxlength="24" placeholder="Seu apelido"></label><br><button id="joinBtn">Participar</button></section>
 <section id="lobby" class="center hidden"><h2>Escaneie o QR Code ou use o PIN</h2><div id="pinShow" class="pin"></div><img id="qr" alt="QR Code para entrar" style="width:200px;max-width:100%;background:white;padding:7px;border-radius:12px"><p><a id="joinLink" href="#"></a></p><h3 id="playersCount">0 participantes</h3><p id="lobbyNames"></p><button id="start" disabled>▶ Começar quiz</button></section>
 <section id="studentWait" class="center hidden"><h2>✅ Participação confirmada</h2><p>Bem-vindo(a), <strong id="myName"></strong>!</p><p>O professor iniciará a partida.</p></section>
-<section id="game" class="hidden"><div class="game-meta"><strong id="round"></strong><span id="skillLabel">Revisão SARESP</span><strong id="timer" class="timer">⏱ 55s</strong><strong id="counter"></strong></div><div class="progress-track"><div id="progressFill" style="width:0%"></div></div><div id="artStage" role="img" aria-label="Ilustração animada referente à disciplina"><svg id="artSvg" viewBox="0 0 960 255" preserveAspectRatio="xMidYMid slice"></svg><span id="visualTitle" class="art-tag">Desafio SARESP</span></div><div id="songPanel" class="music-panel hidden"><div class="music-head"><span class="music-title" id="songTitle">🎤 Ouça e interprete</span><div class="music-player"><button id="playSong" type="button" aria-label="Reproduzir gravação real no vídeo oficial">▶ Ouvir gravação real</button></div></div><div class="music-flex"><img id="musicCover" alt="Capa do videoclipe oficial" loading="lazy" referrerpolicy="no-referrer"><div class="music-copy"><p class="lyric-label">🎤 Trecho curto da letra original</p><blockquote class="lyric-paper" id="lyricText"></blockquote><p class="music-explain">Ouça a gravação oficial para analisar a letra e os recursos expressivos.</p><a id="musicOfficialLink" href="#" target="_blank" rel="noopener noreferrer">Abrir vídeo oficial ↗</a></div></div><div id="videoWrap" class="video-wrap hidden"><iframe id="officialVideo" title="Clipe musical oficial no YouTube" allow="autoplay; encrypted-media; picture-in-picture; accelerometer; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="music-explain">O áudio é reproduzido no player do YouTube. Se não carregar, abra o vídeo oficial pelo link.</p></div><p id="timeNote"></p><h2 id="q"></h2><div class="answers" id="options"></div><p id="answerHint"></p></section>
+<section id="game" class="hidden"><div class="game-meta"><strong id="round"></strong><span id="skillLabel">Revisão SARESP</span><span id="difficultyLabel" class="level-chip lv-medium">🟡 Médio</span><strong id="timer" class="timer">⏱ 55s</strong><strong id="counter"></strong></div><div class="progress-track"><div id="progressFill" style="width:0%"></div></div><div id="artStage" role="group" aria-label="Imagem ilustrativa relacionada à questão"><img id="illustration" alt="Ilustração temática da pergunta" loading="eager" decoding="async"><span id="visualTitle" class="art-tag">Desafio SARESP</span></div><div id="songPanel" class="music-panel hidden"><div class="music-head"><span class="music-title" id="songTitle">🎤 Ouça e interprete</span><div class="music-player"><button id="playSong" type="button" aria-label="Reproduzir gravação real no vídeo oficial">▶ Ouvir gravação real</button></div></div><div class="music-flex"><img id="musicCover" alt="Capa do videoclipe oficial" loading="lazy" referrerpolicy="no-referrer"><div class="music-copy"><p class="lyric-label">🎤 Trecho curto da letra original</p><blockquote class="lyric-paper" id="lyricText"></blockquote><p class="music-explain">Ouça a gravação oficial para analisar a letra e os recursos expressivos.</p><a id="musicOfficialLink" href="#" target="_blank" rel="noopener noreferrer">Abrir vídeo oficial ↗</a></div></div><div id="videoWrap" class="video-wrap hidden"><iframe id="officialVideo" title="Clipe musical oficial no YouTube" allow="autoplay; encrypted-media; picture-in-picture; accelerometer; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="music-explain">O áudio é reproduzido no player do YouTube. Se não carregar, abra o vídeo oficial pelo link.</p></div><p id="timeNote"></p><h2 id="q"></h2><div class="answers" id="options"></div><p id="answerHint"></p></section>
 <section id="result" class="hidden center"><span id="starBurst">🎉✨🎉</span><h2 id="resultTitle"></h2><div id="correctBox"></div><p id="feedback"></p><h2>🏆 Ranking ao vivo</h2><div id="ranking"></div><button id="next" class="hidden">Próxima questão →</button><p id="waitNext">Aguarde o professor.</p></section>
 <section id="reflection" class="hidden"><h2>✍️ Bilhete de saída: o que aprendi?</h2>
 <p>Responda com suas palavras. Não existe pontuação automática nesta etapa: sua professora vai ler suas respostas.</p>
@@ -105,7 +117,7 @@ button:not(:disabled):active{transform:scale(.97);box-shadow:0 1px 0 #0d0d2150}
 </section>
 <section id="final" class="hidden"><h2>🏆 Pódio final</h2><div class="podium" id="podium"></div><h2>Classificação completa</h2><div id="finalRanking"></div><p>🌟 Conhecimento é conquista: continue estudando!</p><p><button onclick="location.href='/saresp.html'">Nova partida</button></p></section>
 <section id="closed" class="hidden center"><h2>Sala encerrada</h2><p>O professor desconectou. Peça um novo PIN.</p><button onclick="location.href='/saresp.html'">Voltar</button></section>
-<p style="font-size:14px">Questões autorais de revisão baseadas no Roteiro de Estudos SARESP 2026 do 9º ano. Áudio e imagens das canções são carregados pelo YouTube; direitos dos respectivos artistas. Não são itens oficiais do exame. Use apelidos.</p></main><script src="/socket.io/socket.io.js"></script><script>
+<p style="font-size:14px">Questões autorais de revisão baseadas no Roteiro de Estudos SARESP 2026 do 9º ano. Áudio e imagens das canções são carregados pelo YouTube; direitos dos respectivos artistas. Não são itens oficiais do exame. Use apelidos.</p></main><script src="/socket.io/socket.io.js"></script><script src="/art-saresp.js"></script><script>
 const socket=io(),$=id=>document.getElementById(id),screens=['home','join','lobby','studentWait','game','result','reflection','final','closed'];
 let role='',selected=-1,clock,lastReport=null;
 let activeSong=null,songPlaying=false;
@@ -140,43 +152,19 @@ function showSongInfo(d){
  $('musicOfficialLink').textContent='Abrir vídeo oficial no YouTube ↗';
 }
 
-const artIcons={
- literatura:['🏙️','☁️','📰','🔗','🗣️','📣'],
- matematica:['🔢','📐','📏','💸','📊','🎲'],
- ciencias:['🧊','🌈','🧬','🦎','🌳','🪐'],
- historia:['⚖️','📉','🌐','📜','📖','🗺️'],
- geografia:['📦','🧭','🌬️','🏢','📱','♨️'],
- ingles:['🩺','☁️','📝','✨','🛍️','🔀']
-};
-const artColors={
- literatura:['#ec4c8e','#7639d5','#eea151'],
- matematica:['#256cd6','#624ce0','#3cd8df'],
- ciencias:['#009a90','#3169b9','#a3d557'],
- historia:['#c76e3d','#773e96','#eed175'],
- geografia:['#239778','#2079cb','#a3db6b'],
- ingles:['#ef6475','#886be1','#f4c35b']
-};
-const artForms={
- literatura:`<path d="M280 74 Q385 22 475 84 L475 219 Q380 175 280 214Z" fill="#fff9" stroke="#fff" stroke-width="5"/><path d="M475 84 Q575 24 675 74 L675 215 Q571 179 475 219Z" fill="#fffc" stroke="#fff" stroke-width="5"/><path d="M475 86V216" stroke="#7854bc" stroke-width="4"/><path d="M312 115L432 130M310 145L420 153M517 128L645 111M520 156L639 144" stroke="#614c9b" stroke-width="7" opacity=".55" stroke-linecap="round"/>`,
- matematica:`<path d="M338 202 L457 65 L572 202 Z" fill="#f7fffe55" stroke="#fff" stroke-width="8" stroke-linejoin="round"/><circle cx="635" cy="116" r="63" stroke="#fff" stroke-width="9" fill="#ffffff19"/><line x1="635" y1="116" x2="694" y2="116" stroke="#fff" stroke-width="5"/><path d="M369 189H387V172" fill="none" stroke="#fff" stroke-width="4"/><path d="M272 220V48M259 205H697" stroke="#fff7" stroke-width="2"/>`,
- ciencias:`<circle cx="475" cy="142" r="24" fill="#fff8f0"/><ellipse cx="475" cy="142" rx="164" ry="65" fill="none" stroke="#fff" stroke-width="8" transform="rotate(23 475 142)"/><ellipse cx="475" cy="142" rx="164" ry="65" fill="none" stroke="#c6fff8" stroke-width="8" transform="rotate(-23 475 142)"/><circle cx="350" cy="103" r="15" fill="#ffd760"/><circle cx="600" cy="174" r="14" fill="#e8feff"/>`,
- historia:`<path d="M289 92 L472 29 L660 92Z" fill="#fff8e5bd" stroke="#fff8ec" stroke-width="7"/><rect x="284" y="203" width="384" height="25" rx="4" fill="#fff8e5bd"/><rect x="312" y="95" width="42" height="109" fill="#fff8e5bd"/><rect x="397" y="95" width="42" height="109" fill="#fff8e5bd"/><rect x="482" y="95" width="42" height="109" fill="#fff8e5bd"/><rect x="567" y="95" width="42" height="109" fill="#fff8e5bd"/>`,
- geografia:`<circle cx="475" cy="138" r="106" fill="#d4f9ff32" stroke="#fff" stroke-width="7"/><ellipse cx="475" cy="138" rx="44" ry="106" fill="none" stroke="#fff9" stroke-width="4"/><ellipse cx="475" cy="138" rx="106" ry="40" fill="none" stroke="#fff9" stroke-width="4"/><path d="M422 74L462 56L490 75L480 98L515 116L495 142L466 137L447 162L428 136L402 122Z" fill="#e6f8a6c4"/><path d="M511 168L547 152L569 172L555 202L527 211L513 189Z" fill="#e6f8a6c4"/>`,
- ingles:`<rect x="268" y="51" width="265" height="132" rx="37" fill="#fff9" stroke="#fff" stroke-width="5"/><path d="M357 182L326 211L410 182" fill="#fff9" stroke="#fff" stroke-width="5"/><rect x="492" y="96" width="230" height="112" rx="31" fill="#fff8" stroke="#fff" stroke-width="5"/><path d="M629 207L674 227L663 198" fill="#fff8" stroke="#fff" stroke-width="5"/><path d="M316 95H470M316 124H423M541 142H675M541 169H635" stroke="#7c62b8" stroke-width="9" stroke-linecap="round"/>`
-};
 function renderArt(d){
- const art=artForms[d.art]?' '+d.art:' literatura',k=art.trim(),colors=artColors[k],sym=(artIcons[k]||[])[d.visual%6]||'⭐';
- const g='g'+d.index,angle=(d.visual%6)*30;
- const svg=`<defs><linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${colors[0]}"/><stop offset="54%" stop-color="${colors[1]}"/><stop offset="100%" stop-color="${colors[2]}"/></linearGradient></defs>
- <rect width="960" height="255" rx="20" fill="url(#${g})"/>
- <circle class="orb" cx="115" cy="65" r="83" fill="#fff" opacity=".13"/><circle class="orb" cx="825" cy="220" r="116" fill="#fff" opacity=".12"/>
- <g class="spin" style="transform-origin:480px 130px"><circle cx="480" cy="130" r="123" stroke="#fff5" stroke-width="2" stroke-dasharray="11 18" fill="none"/></g>
- <g opacity=".75"><circle class="twinkle" cx="140" cy="178" r="7" fill="#fff"/><circle class="twinkle" cx="775" cy="61" r="10" fill="#fff"/><path d="M810 175l10 23 24 8-24 8-10 23-9-23-24-8 24-8Z" fill="#fff8"/><path d="M156 23l7 14 14 6-14 5-7 15-5-15-15-5 15-6Z" fill="#fff8"/></g>
- <g transform="rotate(${angle/13-7} 475 135)">${artForms[k]}</g>
- <text class="heroIcon" x="90" y="194" font-size="108" text-anchor="middle">${sym}</text>
- <text x="874" y="130" font-size="80" text-anchor="middle" opacity=".66">${d.emoji||'✨'}</text>`;
- $('artSvg').innerHTML=svg;$('visualTitle').textContent=d.skill+' • '+d.code;
- $('artStage').setAttribute('aria-label','Ilustração de '+d.skill+': '+d.code);
+ const wrap=$('artStage'), img=$('illustration'), key=d.imageKey;
+ if(d.audioVideoId){wrap.classList.add('hidden');return;}
+ wrap.classList.remove('hidden');
+ const artwork=typeof window.getSarespArt==='function'?window.getSarespArt(key):null;
+ if(!artwork){console.error('Ilustração não cadastrada:',key);img.removeAttribute('src');img.alt='Imagem indisponível';return;}
+ img.src=artwork;
+ img.alt=d.imageAlt||'Imagem ilustrativa referente à questão';
+ txt('visualTitle',d.skill+' • '+d.code);
+}
+function showLevel(level){
+ const el=$('difficultyLabel');const key=level==='Fácil'?'easy':level==='Difícil'?'hard':'medium';
+ el.className='level-chip lv-'+key;el.textContent=(key==='easy'?'🟢 ':key==='hard'?'🔴 ':'🟡 ')+level;
 }
 
 const show=id=>{screens.forEach(x=>$(x).classList.toggle('hidden',x!==id));$('teacherPanel').classList.toggle('hidden',!(role==='host'&&(id==='result'||id==='final')))};
@@ -191,7 +179,7 @@ $('start').onclick=()=>socket.emit('start');$('next').onclick=()=>socket.emit('n
 socket.on('roster',r=>{if(role==='host'){txt('playersCount',r.count+' participantes');txt('lobbyNames',r.players.map(p=>p.name).join(' • '));$('start').disabled=r.count===0}});
 socket.on('question',d=>{clearSong();selected=-1;show('game');showSongInfo(d);
  txt('timeNote',d.skill==='Matemática'?'🧮 Tempo ampliado para cálculos: '+d.duration+' segundos':d.audioVideoId?'🎧 Escute o vídeo oficial e interprete a letra: '+d.duration+' segundos':'⏱ Tempo de resposta: '+d.duration+' segundos');
- txt('round','Pergunta '+d.index+' de '+d.total);txt('q',d.q);txt('skillLabel',d.skill||'Revisão');$('progressFill').style.width=((d.index-1)/d.total*100)+'%';renderArt(d);txt('counter','');txt('answerHint',role==='host'?'Acompanhe o total de respostas':'Selecione uma alternativa!');$('options').replaceChildren();d.a.forEach((a,i)=>{let b=document.createElement('button');b.className='answer';b.textContent=['▲','◆','●','■'][i]+' '+a;b.disabled=role==='host';b.onclick=()=>{if(selected!==-1)return;selected=i;socket.emit('answer',i,r=>{if(!r?.ok)txt('answerHint','Erro ao registrar resposta')});[...$('options').children].forEach(x=>x.disabled=true);b.classList.add('chosen');txt('answerHint','Resposta enviada!')};$('options').append(b)});clearInterval(clock);const update=()=>{let remain=Math.max(0,Math.ceil((d.deadline-Date.now())/1000));txt('timer','⏱ '+remain+'s');$('timer').classList.toggle('urgent',remain<=10);};update();clock=setInterval(update,250)});
+ txt('round','Pergunta '+d.index+' de '+d.total);txt('q',d.q);txt('skillLabel',d.skill||'Revisão');showLevel(d.difficulty||'Médio');$('progressFill').style.width=((d.index-1)/d.total*100)+'%';renderArt(d);txt('counter','');txt('answerHint',role==='host'?'Acompanhe o total de respostas':'Selecione uma alternativa!');$('options').replaceChildren();d.a.forEach((a,i)=>{let b=document.createElement('button');b.className='answer';b.textContent=['▲','◆','●','■'][i]+' '+a;b.disabled=role==='host';b.onclick=()=>{if(selected!==-1)return;selected=i;socket.emit('answer',i,r=>{if(!r?.ok)txt('answerHint','Erro ao registrar resposta')});[...$('options').children].forEach(x=>x.disabled=true);b.classList.add('chosen');txt('answerHint','Resposta enviada!')};$('options').append(b)});clearInterval(clock);const update=()=>{let remain=Math.max(0,Math.ceil((d.deadline-Date.now())/1000));txt('timer','⏱ '+remain+'s');$('timer').classList.toggle('urgent',remain<=10);};update();clock=setInterval(update,250)});
 socket.on('answered',d=>{if(role==='host')txt('counter',d.count+'/'+d.total+' respostas')});
 socket.on('reveal',d=>{clearSong();clearInterval(clock);show('result');txt('resultTitle',role==='host'?'✅ Resposta comentada':selected<0?'⏰ Tempo esgotado':selected===d.correct?'🎉 Você acertou!':'💡 Hora de aprender!');txt('correctBox',('ABCD'[d.correct])+' — '+d.correctText);txt('feedback','📚 EXPLICAÇÃO: '+d.explanation);$('starBurst').classList.toggle('play',selected===d.correct);ranking('ranking',d.ranking);$('next').classList.toggle('hidden',role!=='host');$('waitNext').classList.toggle('hidden',role==='host')});
 socket.on('finished',d=>{clearSong();show(role==='host'?'final':'reflection');$('podium').replaceChildren();[d.ranking[1],d.ranking[0],d.ranking[2]].forEach((p,i)=>{let div=document.createElement('div');div.textContent=p?['🥈','🥇','🥉'][i]+' '+p.name+' '+p.score.toLocaleString('pt-BR')+' pts':'—';$('podium').append(div)});ranking('finalRanking',d.ranking)});
